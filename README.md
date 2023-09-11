@@ -24,8 +24,8 @@ The more you know, the more you realize how much you don't know.
 ~~~
 #### 
 
-<a align="left" href="https://github.com/anuraghazra/github-readme-stats">
- <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
+<a align="left" href="https://github.com/fadeway32/">
+ <img align="left" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
 </a>
 
 
