@@ -14,20 +14,20 @@
 <a href="https://github.com/anuraghazra/github-readme-stats">
    <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
 </a>
-### Stats:
-<h1/>
+
+#### Stats:
+
 <div>
-<img align="left" alt='leetcode stats' src='https://stats.justsong.cn/api/leetcode?username=fadeway32&cn=true'/>
+ <img align="left" style=' display: block;' alt='leetcode stats' src='https://stats.justsong.cn/api/leetcode?username=fadeway32&cn=true'/>
+ <img align="left"  style=' display: block;' alt='Top Langs' src='https://github-readme-stats.vercel.app/api/top-langs/?username=fadeway32&layout=compact&theme=tokyonight'/>
+ <img align="left"  style=' display: block;' alt='leetcode stats' src='https://github-readme-activity-graph.cyclic.app/graph?username=fadeway32&theme=white'/>
+ <img align="left"  style=' display: block;'  alt='ReadMe' src='https://github-readme-stats.vercel.app/api/pin/?username=fadeway32&repo=JavaLearn' />
 </div>
-<h1/>
- <div>
-<img align="left" alt='Top Langs' src='https://github-readme-stats.vercel.app/api/top-langs/?username=fadeway32&layout=compact&theme=tokyonight'/>
-</div>
- <h1/>
-<img align="left" alt='leetcode stats' src='https://github-readme-activity-graph.cyclic.app/graph?username=fadeway32&theme=white'/>
- <div>
-<img align="left" alt='ReadMe' src='https://github-readme-stats.vercel.app/api/pin/?username=fadeway32&repo=JavaLearn' />
-</div>
-<h1/>
+
+#### Motto:
+
+<strong>The more you know, the more you realize how much you don't know.</strong>
+
+
 
 
