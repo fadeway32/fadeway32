@@ -19,24 +19,24 @@
 
 #### Motto:
 
-<strong>The more you know, the more you realize how much you don't know.</strong>
+~~~
+The more you know, the more you realize how much you don't know.
+~~~
 
-------------------------------------------------------------------------------------
-<a href="https://github.com/anuraghazra/github-readme-stats">
-   <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
+
+<a align="left" href="https://github.com/anuraghazra/github-readme-stats">
+ <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
 </a>
-------------------------------------------------------------------------------------
-<a>
+
+
  <img align="left" style=' display: block;' alt='leetcode stats' src='https://stats.justsong.cn/api/leetcode?username=fadeway32&cn=true'/>
- </a>
- ------------------------------------------------------------------------------------
 
-  <a>
- <img align="left"  style=' display: block;' alt='leetcode stats' src='https://github-readme-activity-graph.cyclic.app/graph?username=fadeway32&theme=white'/>
-    </a>
- ------------------------------------------------------------------------------------
-      <a>
+
+
+
+
  <img align="left"  style=' display: block;'  alt='ReadMe' src='https://github-readme-stats.vercel.app/api/pin/?username=fadeway32&repo=JavaLearn' />
-</a>
+
+
 
 
