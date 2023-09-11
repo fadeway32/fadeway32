@@ -1,5 +1,8 @@
-## Personal Introduction
-![](https://gitee.com/fadeway32/fadeway32/raw/master/img/cover.png)
+## 😋 Hi!   I'm  `fadeway32 / 华哥` ,Here is my self-introduction 😎 
+###  
+ <img align="right" src='https://gitee.com/fadeway32/fadeway32/raw/master/img/cover.png' style='max-width: 100%;max-height: 100%;'/>  </img>
+###
+###
 ### fadeway32 
 - 👋 I'm a programmer 
 - 🔭 I’m currently working on shenzhen 
@@ -8,16 +11,9 @@
 ####
 #### Skills:
 
-<div style='display:inline'>
-  <div></div>
-  <img src=https://img.shields.io/badge/java-1.0-brightgreen/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Familiar</strong></div>
-<div style='display:inline'>
-    <div></div>
-  <img src=https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <strong>Beginner</strong></div>
-<div style='display:inline'>
-    <div></div>
-  <img src='https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Familiar</strong>
-</div> 
+<a href="https://github.com/anuraghazra/github-readme-stats">
+   <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
+</a>
 
 
 ####
@@ -25,6 +21,6 @@
 ####
 ![](https://github-readme-activity-graph.cyclic.app/graph?username=fadeway32&theme=dracula)
 ####
-![LeetCode Stats](https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=transparent)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=fadeway32&repo=fadeway32)](https://github.com/anuraghazra/github-readme-stats)
 
 
