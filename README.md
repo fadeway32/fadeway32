@@ -15,11 +15,12 @@
    <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
 </a>
 
-
+###
+![LeetCode](https://stats.justsong.cn/api/leetcode?username=fadeway32&cn=true)
 ####
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=fadeway32&layout=compact&theme=tokyonight)
 ####
-![](https://github-readme-activity-graph.cyclic.app/graph?username=fadeway32&theme=dracula)
+![](https://github-readme-activity-graph.cyclic.app/graph?username=fadeway32&theme=white)
 ####
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=fadeway32&repo=fadeway32)](https://github.com/anuraghazra/github-readme-stats)
 
