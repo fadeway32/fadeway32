@@ -22,7 +22,7 @@
 ~~~
 The more you know, the more you realize how much you don't know.
 ~~~
-
+#### 
 
 <a align="left" href="https://github.com/anuraghazra/github-readme-stats">
  <img align="right" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
@@ -34,8 +34,6 @@ The more you know, the more you realize how much you don't know.
 
 
 
-
- <img align="left"  style=' display: block;'  alt='ReadMe' src='https://github-readme-stats.vercel.app/api/pin/?username=fadeway32&repo=JavaLearn' />
 
 
 
