@@ -28,9 +28,9 @@ The more you know, the more you realize how much you don't know.
  <img align="left" src="https://github-readme-stats.vercel.app/api?username=fadeway32&show_icons=true&theme=buefy&hide_border=true" alt="" /> 
 </a>
 
-
-<img align="left" style=' display: block;' alt='leetcode stats' src='https://stats.justsong.cn/api/leetcode?username=fadeway32&cn=true'/>
-
+<a align="left" href="https://github.com/fadeway32/">
+ <img align="left" style=' display: block;' alt='leetcode stats' src='https://stats.justsong.cn/api/leetcode?username=fadeway32&cn=true'/>
+</a>
 
 
 
