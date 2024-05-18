@@ -8,6 +8,7 @@
 - 🔭 I’m currently working on shenzhen 
 - 🌱 I’m currently learning Java ,Go and Python and so on
 - 😐 address: fadeway520@gmail.com
+- 🔭 blog: https://fadeway32.github.io/
 ####
 #### Skills:
 
