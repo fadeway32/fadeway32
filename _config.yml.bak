@@ -105,4 +105,5 @@ theme: liveForCode
 deploy:
   type: git
   repo: https://gitee.com/fadeway32/fadeway32.git
+  repo: https://github.com/fadeway32/fadeway32.git
   branch: master
