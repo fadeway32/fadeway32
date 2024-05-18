@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>
+        
+            K8S部署dashboard
+        
+    </title>
+    <link rel="shortcut icon" href="#"/>
+
+    <link type="text/css" rel="stylesheet" href="/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSerifSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="/font/Roboto.css">
+    <link type="text/css" rel="stylesheet" href="/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="/css/base.css">
+    <link type="text/css" rel="stylesheet" href="/css/code.css">
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+    <a id="cover"></a>
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
+<div id="header" class="header">
+    <div class="vertical">
+        <div class="inner">
+            
+                <h1 class="header-subtitle">K8S部署dashboard</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2024-05-13
+                        </span>
+                        
+                            <span id="/article/1715610102/" class="leancloud_visitors" data-flag-title="K8S部署dashboard">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/1715610102/"></span>
+                        </span>  
+                    </p>
+                    
+                        
+                            <span class="category-color">Kubernetes</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">Kubernetes</span>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+</div>
+<div id="container">
+    
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="K8S部署dashboard"><a href="#K8S部署dashboard" class="headerlink" title="K8S部署dashboard"></a>K8S部署dashboard</h1><p>单机搭建dashboard</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1797416">https://cloud.tencent.com/developer/article/1797416</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; kubectl create serviceaccount dashboard-admin -n kube-system</span><br><span class="line">serviceaccount/dashboard-admin created</span><br><span class="line">PS C:\Users\Administrator&gt; kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard</span><br><span class="line">clusterrolebinding.rbac.authorization.k8s.io/dashboard-admin created</span><br><span class="line">PS C:\Users\Administrator&gt; kubectl -n kube-system create token dashboard-admin</span><br><span class="line">eyJhbGciOiJSUzI1NiIsImtpZCI6ImtGdnBVbkIyRlpqRVE2OWdncXpkSERHcHYweDRjWVU1MDUxdTFndHN4dzgifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzE1NjEyNTMxLCJpYXQiOjE3MTU2MDg5MzEsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJkYXNoYm9hcmQtYWRtaW4iLCJ1aWQiOiIxNTI5MWFmMC05YzhjLTRhZjMtYjIwMy1hMGU1ZDc0YTA3ZWEifX0sIm5iZiI6MTcxNTYwODkzMSwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.NE28iISr87ib3z-dwfalCGay1gu-GjrSLKjGaxbh6g43vB8NL7VgKMPhLJWYqjRTyXrSFp_2YuytD1R3f5AYEg5BlsV5qAW5TgwfF7-9iWSnsM-4EKfHSzDI7b-ScUmspjhXGVp-f-xw7FF5D1DHVSyMXgYpqbxxU_gbfaQA-TuJsWbPj3RRAiKEb8N_YGE1WDxm7Rl4runKgU99jVN3TJHyd02fCCrZM0A4aBmKFx3sPivSOdlcydIzuXQywe9VZK7r-H3NJa6AlzuSUFIHaA-_Pq2XFjWDR0JNbaBXrzLo--sgFPagUShYo8tEKrBABj70oB6ROFY32JN0_0WBBA</span><br></pre></td></tr></table></figure>
+
+
+
+<p>常见命令</p>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="create"><a href="#create" class="headerlink" title="create"></a>create</h3><p>根据文件或标准输入（stdin）创建资源。</p>
+<p><strong>创建资源</strong></p>
+<blockquote>
+<p>kubectl create -f .&#x2F;nginx.yaml</p>
+</blockquote>
+<p><strong>创建当前目录下的所有yaml资源</strong></p>
+<blockquote>
+<p>kubectl create -f .</p>
+</blockquote>
+<p><strong>使用多个文件创建资源</strong></p>
+<blockquote>
+<p>kubectl create -f .&#x2F;nginx1.yaml -f .&#x2F;mysql2.yaml</p>
+</blockquote>
+<p><strong>使用目录下的所有清单文件来创建资源</strong></p>
+<blockquote>
+<p>kubectl create -f .&#x2F;dir</p>
+</blockquote>
+<p><strong>使用 url 来创建资源</strong></p>
+<blockquote>
+<p>kubectl create -f <a href="https://link.juejin.cn/?target=https://xxx.git.io/vxxzso.yaml">xxx.git.io&#x2F;vxxzso.yaml</a></p>
+</blockquote>
+<h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><p>在集群中运行特定镜像。</p>
+<p><strong>创建带有终端的pod</strong></p>
+<blockquote>
+<p>kubectl run -i –tty busybox –image&#x3D;busybox</p>
+</blockquote>
+<p><strong>启动一个 nginx 实例</strong></p>
+<blockquote>
+<p>kubectl run nginx –image&#x3D;nginx</p>
+</blockquote>
+<p><strong>启动多个pod实例</strong></p>
+<blockquote>
+<p>kubectl run mybusybox –image&#x3D;busybox –replicas&#x3D;5</p>
+</blockquote>
+<h3 id="explain"><a href="#explain" class="headerlink" title="explain"></a>explain</h3><p>获取资源的文档。</p>
+<p><strong>获取 pod 和 svc 的文档</strong></p>
+<blockquote>
+<p>kubectl explain pods,svc</p>
+</blockquote>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>获取所有的resources，包括<code>node</code>、<code>pod</code> 、<code>namespace</code>、<code>service</code> 、<code>deployment</code>等，可以展示一个或者多个资源。</p>
+<p><strong>查看nodes节点</strong></p>
+<blockquote>
+<p>kubectl get nodes</p>
+</blockquote>
+<p><strong>通过yaml文件查询资源</strong></p>
+<blockquote>
+<p>kubectl get -f xxx.yaml</p>
+</blockquote>
+<p><strong>查询资源</strong></p>
+<blockquote>
+<p>kubectl get resourcequota</p>
+</blockquote>
+<p><strong>查询endpoints</strong></p>
+<blockquote>
+<p>kubectl get endpoints</p>
+</blockquote>
+<h4 id="查看pods"><a href="#查看pods" class="headerlink" title="查看pods"></a>查看pods</h4><p><strong>查看指定空间<code>kube-system</code>的pods</strong></p>
+<blockquote>
+<p>kubectl get po -n kube-system</p>
+</blockquote>
+<p>查看所有空间的pods的详细信息</p>
+<blockquote>
+<p>kubectl get pods -o wide –all-namespaces</p>
+</blockquote>
+<p>查看指定空间<code>kube-system</code>的pods的详细信息</p>
+<blockquote>
+<p>kubectl get pod -o wide –namespace&#x3D;kube-system</p>
+</blockquote>
+<h4 id="获取指定namespace信息"><a href="#获取指定namespace信息" class="headerlink" title="获取指定namespace信息"></a>获取指定namespace信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bash复制代码kubectl get namespaces</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取指定namespace的yaml格式和json格式信息</span></span><br><span class="line">kubectl get namespaces kube-system -o yaml </span><br><span class="line">kubectl get namespaces kube-system -o json</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取service-svc"><a href="#获取service-svc" class="headerlink" title="获取service(svc)"></a>获取service(svc)</h4><p><strong>查看所有命令空间的service</strong></p>
+<blockquote>
+<p>kubectl get svc –all-namespaces</p>
+</blockquote>
+<p><strong>查看所有命令空间的service的其他写法</strong></p>
+<blockquote>
+<p>kubectl get services –all-namespaces</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bash复制代码<span class="comment"># 通过 yaml 方式导出所有 service</span></span><br><span class="line">kubectl get service -o yaml &gt; backup.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过 yaml 方式导出单个 service</span></span><br><span class="line">kubectl get service serviceName -o yaml &gt; backup.yaml</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询事件-Event"><a href="#查询事件-Event" class="headerlink" title="查询事件(Event)"></a>查询事件(Event)</h4><blockquote>
+<p>kubectl get events –all-namespaces</p>
+</blockquote>
+<p><strong>查看某个命名空间下的事件</strong></p>
+<blockquote>
+<p>kubectl get events -n kube-system</p>
+</blockquote>
+<p><strong>查看某个命名空间下的事件，并根据关键字过滤</strong></p>
+<blockquote>
+<p>kubectl get events -n kube-system | grep “name”</p>
+</blockquote>
+<h4 id="通过lable查询"><a href="#通过lable查询" class="headerlink" title="通过lable查询"></a>通过lable查询</h4><blockquote>
+<p>kubectl get pods -l app&#x3D;nginx -o yaml|grep podIP</p>
+</blockquote>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><p>根据文件、标准输入（stdin）、资源名或者资源标签删除资源。</p>
+<p><strong>删除 pod.json 文件中定义的类型和名称的pod</strong></p>
+<blockquote>
+<p>kubectl delete -f .&#x2F;pod.json</p>
+</blockquote>
+<p><strong>删除名为“baz”的 pod 和名为“foo”的 service</strong></p>
+<blockquote>
+<p>kubectl delete pod,service baz foo</p>
+</blockquote>
+<p><strong>删除具有 name&#x3D;myLabel 标签的 pod 和 serivce</strong></p>
+<blockquote>
+<p>kubectl delete pods,services -l name&#x3D;myLabel</p>
+</blockquote>
+<p><strong>删除具有 name&#x3D;myLabel 标签的 pod 和 service，包括尚未初始化的</strong></p>
+<blockquote>
+<p>kubectl delete pods,services -l name&#x3D;myLabel –include-uninitialized</p>
+</blockquote>
+<p><strong>删除 my-ns 命名空间下的所有 pod 和 serivce，包括尚未初始化的</strong></p>
+<blockquote>
+<p>kubectl -n my-ns delete po,svc –all</p>
+</blockquote>
+<p><strong>强制删除pod(如，prometheus-7fcfcb9f89-qkkf7)</strong></p>
+<blockquote>
+<p>kubectl delete pods prometheus-7fcfcb9f89-qkkf7 –grace-period&#x3D;0 –force</p>
+</blockquote>
+<h2 id="集群管理命令"><a href="#集群管理命令" class="headerlink" title="集群管理命令"></a>集群管理命令</h2><h3 id="cluster-info"><a href="#cluster-info" class="headerlink" title="cluster-info"></a>cluster-info</h3><p><strong>查看集群信息</strong></p>
+<blockquote>
+<p>kubectl cluster-info</p>
+</blockquote>
+<p><strong>查看更详细的集群信息。</strong></p>
+<blockquote>
+<p>kubectl cluster-info dump</p>
+</blockquote>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>显示CPU、内存、存储资源的使用情况。</p>
+<p><strong>显示节点（k8s-node）资源的使用情况</strong></p>
+<blockquote>
+<p>kubectl top node k8s-node</p>
+</blockquote>
+<p><strong>显示集群所有节点的资源的使用情况</strong></p>
+<blockquote>
+<p>kubectl top node</p>
+</blockquote>
+<p><strong>显示指定命名空间（如，logging）的pod的资源的使用情况</strong></p>
+<blockquote>
+<p>kubectl top pod -n logging</p>
+</blockquote>
+<h3 id="cordon"><a href="#cordon" class="headerlink" title="cordon"></a>cordon</h3><p>标记节点不可调度。</p>
+<p><strong>标记k8s-node节点不可调度</strong></p>
+<blockquote>
+<p>kubectl cordon k8s-node</p>
+</blockquote>
+<h3 id="uncordon"><a href="#uncordon" class="headerlink" title="uncordon"></a>uncordon</h3><p>标记节点可调度。</p>
+<p><strong>标记k8s-node节点可调度</strong></p>
+<blockquote>
+<p>kubectl uncordon k8s-node</p>
+</blockquote>
+<h3 id="drain"><a href="#drain" class="headerlink" title="drain"></a>drain</h3><p>排除某节点，准备进行维护</p>
+<p><strong>排除k8s-node节点，准备进行维护</strong></p>
+<blockquote>
+<p>kubectl drain k8s-node</p>
+</blockquote>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/avatar.jpg" alt="Live For Code">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Live For Code
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/article/1715610102/" target="_blank">K8S部署dashboard</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>你知道的越多,你不知道的越多
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://fadeway32.gitee.io/" target="_blank">fadeway32</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
+                        
+                            <a href="/category/Kubernetes/">Kubernetes</a>
+                        
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/Kubernetes/">Kubernetes</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
+                    
+                        <a href="/article/1805786659/" class="prev-prefix">« </a> 上一篇：    <a href="/article/1805786659/" title="发布于 2024-09-01 12:00">Jetbrain破解</a>
+                        <br>
+                    
+                    
+                        <a href="/article/1715260887683/" class="next-prefix">» </a> 下一篇：    <a href="/article/1715260887683/" title="发布于 2024-05-09 09:21">LeetCode判断回文链表</a>
+                    
+                </div>
+            </div>
+            
+    <div class="article-comments">
+        
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+
+        </div>
+    
+</div>
+    <div id="footer"></div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        
+            <div class="menu-notice">
+                <span class="iconfont icon-notice"></span>
+                <div class="notice">
+                    <span>简单地活着，肆意而又精彩！</span>
+                </div>
+            </div>
+        
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar">
+                    <img src="/image/sidebar/avatar.jpg">
+                </div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user"><span>Live For Code</span></div>
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul>
+                    
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                    
+                        <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
+                    
+                        <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
+                    
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                    
+                        <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
+                    
+                        <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
+                    
+                        <li class=""><a href="/atom.xml" class="" target="_blank"><span class="iconfont icon-rss"></span>订阅</a></li>
+                    
+                        <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
+                    
+                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
+                    
+                        <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
+                    
+                </ul> 
+            </div> 
+            <div class="menu-link">
+                <div class="box">
+                    <div class="image-box"></div>
+                </div>
+                
+                    <a name="知乎" href="https://www.zhihu.com/people/wo-xin-de-love" class="" target="_blank" data=""><span class="iconfont icon-zhihu"></span></a>
+                
+                    <a name="微博" href="https://weibo.com/u/3939432776" class="" target="_blank" data=""><span class="iconfont icon-weibo"></span></a>
+                
+                    <a name="QQ" href="javascript:;" class="image" target="_self" data="https://gitee.com/fadeway32/fadeway32/raw/master/img/B5C4BECA9D2E1BBE5B5B9020421E9426.png"><span class="iconfont icon-qq"></span></a>
+                
+                    <a name="微信" href="javascript:;" class="image" target="_self" data="https://gitee.com/fadeway32/fadeway32/raw/master/img/F35AB4B62DEAE3B5DC2907087E35424E.png"><span class="iconfont icon-wechat"></span></a>
+                
+                    <a name="GitHub" href="https://github.com/first19326" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                
+            </div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="/css/search.css">
+<script type="text/javascript" src="/js/iscroll.js"></script>
+<script type="text/javascript" src="/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+
+    
+        <link type="text/css" rel="stylesheet" href="/css/APlayer.css">
+        <script type="text/javascript" src="/js/APlayer.min.js"></script>
+        <script type="text/javascript" src="/js/Meting.min.js"></script>
+        <meting-js id="3778678" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+    
+    
+    <div class="wrap-right">
+        <div class="setting">
+            <div class="iconbox favorites" switch="false">
+                <span class="iconfont icon-favorites"></span>
+                <span class="icontext">关注</span>
+            </div>
+            <div class="iconbox mode">
+                <div class="light">
+                    <span class="iconfont icon-daymode"></span>
+                    <span class="icontext">浅色模式</span>
+                </div>
+                <div class="dark">
+                    <span class="iconfont icon-nightmode-fill"></span>
+                    <span class="icontext">深色模式</span>
+                </div>
+            </div>
+            <a href="javascript:;" target="_self" class="search">
+                <div class="iconbox">
+                    <span class="iconfont icon-search-menu"></span>
+                    <span class="icontext">搜索</span>
+                </div>
+            </a>
+            <div class="iconbox bottom">
+                <div style="display: inline-block; transform: rotate(180deg);">
+                    <span class="iconfont icon-top"></span>
+                </div>
+                <span class="icontext">跳至底部</span>
+            </div>
+        </div>
+        <div class="iconbox set">
+            <div style="display: inline-block;">
+                <span class="iconfont icon-setting"></span>
+            </div>
+            <span class="icontext">设置</span>
+        </div>
+        <div class="iconbox top">
+            <span class="iconfont icon-top"></span>
+            <span class="icontext">返回顶部</span>
+        </div>
+    </div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : "first19326",
+        GitHubRepositories : "Hexo-LiveForCode",
+
+        User             : "Live For Code",
+        UserAvatar       : "/image/sidebar/avatar.jpg",
+        WebsiteStartDate : "2020-01-01",
+
+        WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Live For Code",
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : "(*´∇｀*) 欢迎回来!",
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : "/image/website/logo.png",
+
+        ProgressBar : {
+            id       : "topProgressBar",
+            color    : "#77B6FF",
+            height   : "2px",
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound : {
+                tension  : 16,
+                friction : 5
+            },
+            spinner : {
+                id     : "spinner",
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : "#F0F0F0",
+                    stroke     : "#272633",
+                    base       : "",
+                    child      : "#272633"
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : "rgba(255, 255, 255, .2)",
+            clearOffset : 0.3
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : "60%",
+            colorBrightness  : "50%",
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : "random",
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                "/image/header/home.jpg",
+            
+                "/image/header/home.jpeg",
+            
+                "/image/header/2023-04-17-20-51-03.jpg",
+            
+                "/image/header/2023-04-17-20-54-07.jpg",
+            
+                "/image/header/2023-04-17-20-54-22.jpg",
+            
+                "/image/header/2023-04-17-20-55-25.jpg",
+            
+                "/image/header/2023-04-17-21-04-19.jpg",
+            
+                "/image/header/2023-04-17-21-04-34.jpg",
+            
+                "/image/header/2023-04-17-21-04-41.jpg",
+            
+                "/image/header/2023-04-17-21-05-22.jpg",
+            
+        ],
+        HomeBannerText  : "",
+
+        ArticleHeaderImage : [
+            
+                "/image/header/article.jpg",
+            
+                "/image/header/2023-04-17-21-04-19.jpg",
+            
+                "/image/header/2023-04-17-21-04-34.jpg",
+            
+                "/image/header/2023-04-17-21-04-41.jpg",
+            
+                "/image/header/2023-04-17-21-05-22.jpg",
+            
+        ],
+
+        OtherBannerText : "",
+
+        Error : {
+            icon    : "icon-swimming",
+            title   : "PAGE NOT FOUND",
+            content : [
+                
+                    "很抱歉，您访问的页面不存在！",
+                
+                    "可能是输入地址有误或该地址已变更。",
+                
+            ],
+            buttons : [
+                
+                    {
+                        icon  : "icon-home",
+                        text  : "返回首页",
+                        href  : "https://fadeway32.gitee.io/",
+                        class : ""
+                    },
+                
+            ]
+        },
+
+        MenuNotice : {
+            enable : true,
+            notice : "简单地活着，肆意而又精彩！",
+            speed  : 20
+        },
+        MenuList : [
+            
+                {
+                    name   : "首页",
+                    icon   : "icon-home-fill",
+                    href   : "/",
+                    type   : "index",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "分类",
+                    icon   : "icon-folder-fill",
+                    href   : "/category",
+                    type   : "category",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "标签",
+                    icon   : "icon-discount-fill",
+                    href   : "/tag",
+                    type   : "tag",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "归档",
+                    icon   : "icon-calendar-fill",
+                    href   : "/archive",
+                    type   : "archive",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "赞赏",
+                    icon   : "icon-heart-fill",
+                    href   : "/donate",
+                    type   : "donate",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "关于",
+                    icon   : "icon-about-fill",
+                    href   : "/about",
+                    type   : "about",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "订阅",
+                    icon   : "icon-rss",
+                    href   : "/atom.xml",
+                    type   : "",
+                    class  : "",
+                    target : "_blank"
+                },
+            
+                {
+                    name   : "搜索",
+                    icon   : "icon-search-menu",
+                    href   : "javascript:;",
+                    type   : "",
+                    class  : "search",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "留言板",
+                    icon   : "icon-comments-fill",
+                    href   : "/comment",
+                    type   : "comment",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "友情链接",
+                    icon   : "icon-link",
+                    href   : "/friend",
+                    type   : "friend",
+                    class  : "",
+                    target : "_self"
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        name   : "知乎",
+                        icon   : "icon-zhihu",
+                        href   : "https://www.zhihu.com/people/wo-xin-de-love",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "微博",
+                        icon   : "icon-weibo",
+                        href   : "https://weibo.com/u/3939432776",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "QQ",
+                        icon   : "icon-qq",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "https://gitee.com/fadeway32/fadeway32/raw/master/img/B5C4BECA9D2E1BBE5B5B9020421E9426.png"
+                    },
+                
+                    {
+                        name   : "微信",
+                        icon   : "icon-wechat",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "https://gitee.com/fadeway32/fadeway32/raw/master/img/F35AB4B62DEAE3B5DC2907087E35424E.png"
+                    },
+                
+                    {
+                        name   : "GitHub",
+                        icon   : "icon-github",
+                        href   : "https://github.com/first19326",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2022 WorstOne. All Rights Reserved.</div>",
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                "Based on cnblogs theme SimpleMemory.",
+                            
+                                "",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "SimpleMemory Author:",
+                            
+                                "BNDong",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "Theme:",
+                            
+                                "LiveForCode",
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : "",
+
+        Donate : {
+            paypal  : "",
+            bitcoin : "",
+            alipay  : "/image/donate/alipay.png",
+            wechat  : "/image/donate/wechat.png"
+        },
+
+        Search : {
+            applicationID : "010C3EANT8",
+            apiKey        : "c7abab9f11b79102b9aff7fe6d41447d",
+            indexName     : "Notes",
+            hits          : {
+                page : 20
+            },
+            labels        : {
+                placeholder : "搜索",
+                empty       : "未发现与 「${query}」 相关的内容",
+                stats       : "${hits} 条相关条目，使用了 ${time} 毫秒",
+            }
+        }, 
+
+        Valine : {
+            switch         : true,
+            el             : ".comments-content",
+            appId          : "srhKtvWPQTWYKh3qX8G8M7v0-gzGzoHsz",
+            appKey         : "8uVSP1q6UlALVC5igYfIfv2h",
+            serverURLs     : "",
+            placeholder    : "你是我一生只会遇见一次的惊喜...",
+            avatar         : "mm",
+            meta           : "nick,mail,link",
+            requiredFields : "nick,mail",
+            pageSize       : 5,
+            lang           : "zh-cn",
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : ".toc",
+            contentSelector       : ".article-body",
+            headingSelector       : "h1, h2, h3, h4, h5",
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : ".toc",
+            positionFixedClass    : "toc-fixed",
+            fixedSidebarOffset    : "",
+        },
+
+        Require : {
+            baseUrl     : "/js/",
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : "Meting"
+        },
+        APlayer : {
+            container : ".aplayer",
+            fixed     : true,
+            autoplay  : true,
+            loop      : "all",
+            order     : "random",
+            preload   : "auto",
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 2,
+            audio     : [
+                
+                    {
+                        name   : "Endless Tears",
+                        artist : "CLIFF EDGE",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Endless Tears.mp3",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+            ]
+        },
+        Meting : {
+            id       : "3778678", 
+            lrcshow  : false, 
+            server   : "netease", 
+            type     : "playlist", 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : "all", 
+            order    : "random", 
+            preload  : "auto", 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        Mouse : {
+            enable  : true,
+            options : {
+                size  : 6,
+                sizeF : 24
+            }
+        },
+
+        LazyLoad : {
+            default : "/image/website/lazyload.svg"
+        },
+  
+        Style : {
+            aplayer          : "/css/APlayer.css",
+            archive          : "/css/archive.css",
+            base             : "/css/base.css",
+            clipboard        : "/css/clipboard.css",
+            code             : "/css/code.css",
+            donate           : "/css/donate.css",
+            fancybox         : "/css/jquery.fancybox.css",
+            footer           : "/css/footer.css",
+            iconfont         : "/iconfont/iconfont.css",
+            index            : "/css/index.css",
+            menuBubble       : "/css/menu-bubble.css",
+            mouse            : "/css/mouse.css",
+            page             : "/css/page.css",
+            post             : "/css/post.css",
+            search           : "/css/search.css",
+            tocbot           : "/css/tocbot.css",
+            valine           : "/css/valine.css"
+        },
+
+        Script: {
+            aplayer          : "/js/APlayer.min.js",
+            config           : "/js/require.config.js",
+            index            : "/js/index.js",
+            instantSearch    : "/js/instantsearch.min.js",
+            iscroll          : "/js/iscroll.js",
+            jQuery           : "/js/jquery-3.4.1.min.js",
+            loading          : "/js/loading.js",
+            meting           : "/js/Meting.min.js",
+            require          : "/js/require.min.js"
+        },
+
+        Font: {
+            LongCang    : "/font/LongCang.css",
+            Monda       : "/font/Monda.css",
+            NotoSansSC  : "/font/NotoSansSC.css",
+            NotoSerifSC : "/font/NotoSerifSC.css",
+            Playball    : "/font/Playball.css",
+            PTMono      : "/font/PTMono.css",
+            Roboto      : "/font/Roboto.css",
+            RobotoSlab  : "/font/RobotoSlab.css",
+            Rosario     : "/font/Rosario.css",
+            UbuntuMono  : "/font/UbuntuMono.css"
+        },
+
+        Suffix : {
+            about : "你知道的越多,你不知道的越多"
+        },
+            
+        Theme : {
+            url  : "https://fadeway32.gitee.io/",
+            name : "fadeway32"
+        }  
+    };
+</script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>

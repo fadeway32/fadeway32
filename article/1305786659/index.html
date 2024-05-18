@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>
+        
+            gitee及hexo搭建教程
+        
+    </title>
+    <link rel="shortcut icon" href="#"/>
+
+    <link type="text/css" rel="stylesheet" href="/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSerifSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="/font/Roboto.css">
+    <link type="text/css" rel="stylesheet" href="/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="/css/base.css">
+    <link type="text/css" rel="stylesheet" href="/css/code.css">
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body>
+    <a id="cover"></a>
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
+<div id="header" class="header">
+    <div class="vertical">
+        <div class="inner">
+            
+                <h1 class="header-subtitle">gitee及hexo搭建教程</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-09-01
+                        </span>
+                        
+                            <span id="/article/1305786659/" class="leancloud_visitors" data-flag-title="gitee及hexo搭建教程">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/1305786659/"></span>
+                        </span>  
+                    </p>
+                    
+                        
+                            <span class="category-color">Web</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">web</span>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+</div>
+<div id="container">
+    
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        博客是一个自己积累和记录知识的平台，有很多人想要建立自己的博客，折腾来折腾去的，最后却只能在<strong>博客园</strong>或<strong>简书</strong>上发表文章。</p>
+<p>​    有很多人选择把博客建在<strong>Github</strong>、<strong>gitte</strong>上，这是一个开源代码托管网站，我也把我的博客建在了GitHub上。当初我还为了用哪个博客框架而烦恼呢，因为有很多有名的开源博客框架，比如**Hexo、WordPress、VuePress、Halo **等，wordpress是动态博客框架所以不能建在GitHub上，相比较剩下三种，我选择了**Hexo**。</p>
+<p>​    这里介绍了hexo和gitee的搭建方式：</p>
+<h2 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h2><h3 id="1-1、安装NodeJs"><a href="#1-1、安装NodeJs" class="headerlink" title="1.1、安装NodeJs"></a>1.1、安装NodeJs</h3><p>因为Hexo是基于NodeJs的，所以需要安装NodeJs。</p>
+<p>去<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">NodeJs官网</a>下载长期支持版，然后打开安装程序，安装选项全部默认，一路点击<code>Next</code>。</p>
+<p>安装好了之后，打开cmd输入<code>node -v</code>，如果显示的是下载的版本号那就是安装成功了。<br><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/d6e40115252c48ecaa7ed8704b1781b7.png" alt="img"></p>
+<h3 id="1-2、安装Git"><a href="#1-2、安装Git" class="headerlink" title="1.2、安装Git"></a>1.2、安装Git</h3><p>​    打开<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git官网的下载地址</a>，点击Download for Windows，就可以下载了。</p>
+<p>然后打开安装程序，安装选项全部默认，一路点击<strong>Next</strong>。</p>
+<p>安装完成后打开cmd，输入<code>git --version</code>检查安装，如果显示的是当前git的版本号，那就是安装成功了。</p>
+<div align="left">
+<img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/c08d0339b15e3f7d2b381453f226b638.png" alt="检查安装" style="zoom:100%;" align="left" />
+</div> <br />
+
+
+
+
+<h3 id="1-3-注册gitee账号及开启仓库"><a href="#1-3-注册gitee账号及开启仓库" class="headerlink" title="1.3 注册gitee账号及开启仓库"></a>1.3 注册gitee账号及开启仓库</h3><p>   登录gitee，需要开启page服务，需要上传身份信息,然后设置仓库地址为开源</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/17957899-9026a8fa7da82bf6.png" alt="img"></p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/QQ%E6%88%AA%E5%9B%BE20230220092730.jpg" alt="img"></p>
+<h3 id="1-4-图床搭建"><a href="#1-4-图床搭建" class="headerlink" title="1.4 图床搭建"></a>1.4 图床搭建</h3><p> 下载picGo <a target="_blank" rel="noopener" href="https://kgithub.com/Molunerfinn/PicGo/releases/tag/v2.3.0">https://kgithub.com/Molunerfinn/PicGo/releases/tag/v2.3.0</a></p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/202302200930957.png" alt="image-20230220093012184"></p>
+<p>配置连接gitee参考</p>
+<img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/202302200931846.png#p" alt="image-20230220093107098" align="left" style="zoom:100%" />
+
+<p>测试上传是否成功</p>
+<h3 id="1-5-typora-md文档下载"><a href="#1-5-typora-md文档下载" class="headerlink" title="1.5 typora md文档下载"></a>1.5 typora md文档下载</h3><p>typora 工具下载：<a target="_blank" rel="noopener" href="https://ghpym.lanzoui.com/b00zng7gd">https://ghpym.lanzoui.com/b00zng7gd</a></p>
+<h2 id="二-选择hexo主题"><a href="#二-选择hexo主题" class="headerlink" title="二 选择hexo主题"></a>二 选择hexo主题</h2><p>hexo官网地址:    <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
+<p>进行npm-install&#x2F;或者yarn </p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/202302200937199.png" alt="image-20230220093725590"></p>
+<h2 id="三-hexo语法学习、md文档语法学习"><a href="#三-hexo语法学习、md文档语法学习" class="headerlink" title="三  hexo语法学习、md文档语法学习"></a>三  hexo语法学习、md文档语法学习</h2><p>hexo语法学习：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/commands.html">https://hexo.io/zh-cn/docs/commands.html</a></p>
+<h4 id="3-1几个hexo常用的命令"><a href="#3-1几个hexo常用的命令" class="headerlink" title="3.1几个hexo常用的命令"></a>3.1几个hexo常用的命令</h4><p>Hexo常用命令详解<br>1、hexo init</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init 命令用于初始化一个本地文件夹为网站的根目录</span><br></pre></td></tr></table></figure>
+
+<p>2、hexo new</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 将页面新建</span><br></pre></td></tr></table></figure>
+
+<p>3、hexo generate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate 可以简写成 hexo g</span><br><span class="line">该命令用于生成静态文件</span><br></pre></td></tr></table></figure>
+
+<p>4、hexo server</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server 命令用于启动本地服务器，一般可以简写成 hexo s</span><br><span class="line">可以加一些参数</span><br><span class="line">-p    选项，指定服务器端口，默认为 <span class="number">4000</span></span><br><span class="line">-i    选项，指定服务器 IP 地址，默认为 <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">-s    选项，静态模式 ，仅提供 <span class="keyword">public</span> 文件夹中的文件并禁用文件监视</span><br></pre></td></tr></table></figure>
+
+<p>5、hexo deploy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy 命令用于部署网站，一般可以简写成 hexo d</span><br></pre></td></tr></table></figure>
+
+
+<p>6、hexo clean</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean 命令用于清理缓存文件，是一个比较常用的命令</span><br></pre></td></tr></table></figure>
+
+
+<p>7、hexo –safe</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --safe 表示安全模式，用于禁用加载插件和脚本</span><br></pre></td></tr></table></figure>
+
+
+<p>8、hexo –debug</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --debug 表示调试模式，用于将消息详细记录到终端和 debug.log 文件</span><br></pre></td></tr></table></figure>
+
+
+<p>9、hexo –silent</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo --silent  表示静默模式，用于静默输出到终端</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-md工具地址下载"><a href="#3-2-md工具地址下载" class="headerlink" title="3.2 md工具地址下载"></a>3.2 md工具地址下载</h4><p>typora 工具下载：<a target="_blank" rel="noopener" href="https://ghpym.lanzoui.com/b00zng7gd">https://ghpym.lanzoui.com/b00zng7gd</a></p>
+<h4 id="3-3-md语法使用"><a href="#3-3-md语法使用" class="headerlink" title="3.3 md语法使用"></a>3.3 md语法使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**1.标题**</span><br><span class="line"></span><br><span class="line">\# H1</span><br><span class="line">\## H2</span><br><span class="line">\### H3</span><br><span class="line">\#### H4</span><br><span class="line">\##### H5</span><br><span class="line">\###### H6</span><br><span class="line">（注意：#号和文字间至少得有一个空格）</span><br><span class="line"></span><br><span class="line">同时H1和H2还有另一种写法</span><br><span class="line"></span><br><span class="line">H1</span><br><span class="line">=====</span><br><span class="line">H2</span><br><span class="line">\-------</span><br></pre></td></tr></table></figure>
+<p>（注意：这里“&#x3D;”和“-”的个数也至少有一个，但要紧随文字下一行）</p>
+<p>看效果图↓</p>
+<div align="left">
+<img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220225638.png"></img>
+</div>
+###  **2.列表**
+
+<p> 无序列表使用星号、加号或是减号（* +  -）作为列表标记：</p>
+<p>直接看图↓</p>
+<div align="left">
+<img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224125.png"/>
+</div>
+有序列表则使用数字接着一个英文句点：
+<div align="left">
+<img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224215.png"/>
+</div>
+ 
+
+<p> 组合使用</p>
+<div align="left">
+<img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224244.png"/>
+</div>
+ 
+
+<h3 id="3-文本强调"><a href="#3-文本强调" class="headerlink" title="3.文本强调"></a><strong>3.文本强调</strong></h3><p>Markdown 使用星号（<code>*</code>）和底线（<code>_</code>）作为标记强调字词的符号，被 <code>*</code> 或 <code>_</code> 包围的字词会被转成用 <code>&lt;em&gt;</code> 标签包围，用两个 <code>*</code> 或 <code>_</code>包起来的话，则会被转成 <code>&lt;strong&gt;</code></p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224323.png" alt="img"></p>
+<p>删除线~~，用两个波浪线包裹</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224356.png" alt="img"></p>
+<h3 id="4-代码及区块说明"><a href="#4-代码及区块说明" class="headerlink" title="4.代码及区块说明"></a><strong>4.代码及区块说明</strong></h3><p>细心的小伙伴已经可以看到上面用的&gt;，大于号，就是区块说明</p>
+<p>代码块就是 &#96; 反引号包裹</p>
+<img src="https://img2018.cnblogs.com/blog/1643404/201905/1643404-20190527114656686-797027325.png" align="left">
+
+<p>大量代码块&#96;&#96;&#96;三个反引号包裹</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224436.png" alt="img"></p>
+<h3 id="5-链接及图片引用"><a href="#5-链接及图片引用" class="headerlink" title="5.链接及图片引用"></a><strong>5.链接及图片引用</strong></h3><p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。不管是哪一种，链接文字都是用 [方括号] 来标记。</p>
+<p>1.行内式：只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224503.png" alt="img"></p>
+<p>2.参考式：在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记</p>
+<p> <img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224540.png" alt="img"></p>
+<p>3.图片，也是分为行内式和参考式</p>
+<p>!<img src="/url" alt="图片文字">  与链接一样只是在开头多了个！</p>
+<p> <img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224615.png" alt="img"></p>
+<h3 id="6-分割线"><a href="#6-分割线" class="headerlink" title="6.分割线"></a><strong>6.分割线</strong></h3><p> 分割线可以由* - _（星号，减号，底线）这3个符号的至少3个符号表示，注意至少要3个，且不需要连续，有空格也可以</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224724.png" alt="img"></p>
+<h3 id="7-表格"><a href="#7-表格" class="headerlink" title="7.表格"></a><strong>7.表格</strong></h3><p> 用:的不同位置来改变对齐方式，默认左对齐(:-)，右对齐(-:)，居中对齐(:-:)</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224752.png" alt="img"></p>
+<p> 还可以简写</p>
+<p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224849.png" alt="img"></p>
+<h3 id="8-目录"><a href="#8-目录" class="headerlink" title="8.目录"></a><strong>8.目录</strong></h3><p><img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/20230220224912.png" alt="img"></p>
+<p>点击  1.第一章  浏览器就会滚动的  第一章  上</p>
+<p><strong>转义：</strong></p>
+<p> Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   反斜线</span><br><span class="line">`   反引号</span><br><span class="line">*   星号</span><br><span class="line">_   底线</span><br><span class="line">&#123;&#125;  花括号</span><br><span class="line">[]  方括号</span><br><span class="line">()  括弧</span><br><span class="line">#   井字号</span><br><span class="line">+   加号</span><br><span class="line">-   减号</span><br><span class="line">.   英文句点</span><br><span class="line">!   惊叹号</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以记录自己的博客</p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="https://gitee.com/fadeway32/fadeway32/raw/master/img/F35AB4B62DEAE3B5DC2907087E35424E.png" alt="fadeway32">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>fadeway32
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="https://fadeway32.gitee.io/" target="_blank">hexo</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>blog/wiki
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://fadeway32.gitee.io/" target="_blank">fadeway32</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
+                        
+                            <a href="/category/Web/">Web</a>
+                        
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/web/">web</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
+                    
+                        <a href="/article/1784846423/" class="prev-prefix">« </a> 上一篇：    <a href="/article/1784846423/" title="发布于 2024-02-23 08:00">Chatgpt4Free</a>
+                        <br>
+                    
+                    
+                        <a href="/article/1690804405/" class="next-prefix">» </a> 下一篇：    <a href="/article/1690804405/" title="发布于 2023-07-30 07:50">多线程事务同时回滚案例demo</a>
+                    
+                </div>
+            </div>
+            
+    <div class="article-comments">
+        
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+
+        </div>
+    
+</div>
+    <div id="footer"></div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        
+            <div class="menu-notice">
+                <span class="iconfont icon-notice"></span>
+                <div class="notice">
+                    <span>简单地活着，肆意而又精彩！</span>
+                </div>
+            </div>
+        
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar">
+                    <img src="/image/sidebar/avatar.jpg">
+                </div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user"><span>Live For Code</span></div>
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul>
+                    
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                    
+                        <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
+                    
+                        <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
+                    
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                    
+                        <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
+                    
+                        <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
+                    
+                        <li class=""><a href="/atom.xml" class="" target="_blank"><span class="iconfont icon-rss"></span>订阅</a></li>
+                    
+                        <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
+                    
+                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
+                    
+                        <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
+                    
+                </ul> 
+            </div> 
+            <div class="menu-link">
+                <div class="box">
+                    <div class="image-box"></div>
+                </div>
+                
+                    <a name="知乎" href="https://www.zhihu.com/people/wo-xin-de-love" class="" target="_blank" data=""><span class="iconfont icon-zhihu"></span></a>
+                
+                    <a name="微博" href="https://weibo.com/u/3939432776" class="" target="_blank" data=""><span class="iconfont icon-weibo"></span></a>
+                
+                    <a name="QQ" href="javascript:;" class="image" target="_self" data="https://gitee.com/fadeway32/fadeway32/raw/master/img/B5C4BECA9D2E1BBE5B5B9020421E9426.png"><span class="iconfont icon-qq"></span></a>
+                
+                    <a name="微信" href="javascript:;" class="image" target="_self" data="https://gitee.com/fadeway32/fadeway32/raw/master/img/F35AB4B62DEAE3B5DC2907087E35424E.png"><span class="iconfont icon-wechat"></span></a>
+                
+                    <a name="GitHub" href="https://github.com/first19326" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                
+            </div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="/css/search.css">
+<script type="text/javascript" src="/js/iscroll.js"></script>
+<script type="text/javascript" src="/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+
+    
+        <link type="text/css" rel="stylesheet" href="/css/APlayer.css">
+        <script type="text/javascript" src="/js/APlayer.min.js"></script>
+        <script type="text/javascript" src="/js/Meting.min.js"></script>
+        <meting-js id="3778678" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+    
+    
+    <div class="wrap-right">
+        <div class="setting">
+            <div class="iconbox favorites" switch="false">
+                <span class="iconfont icon-favorites"></span>
+                <span class="icontext">关注</span>
+            </div>
+            <div class="iconbox mode">
+                <div class="light">
+                    <span class="iconfont icon-daymode"></span>
+                    <span class="icontext">浅色模式</span>
+                </div>
+                <div class="dark">
+                    <span class="iconfont icon-nightmode-fill"></span>
+                    <span class="icontext">深色模式</span>
+                </div>
+            </div>
+            <a href="javascript:;" target="_self" class="search">
+                <div class="iconbox">
+                    <span class="iconfont icon-search-menu"></span>
+                    <span class="icontext">搜索</span>
+                </div>
+            </a>
+            <div class="iconbox bottom">
+                <div style="display: inline-block; transform: rotate(180deg);">
+                    <span class="iconfont icon-top"></span>
+                </div>
+                <span class="icontext">跳至底部</span>
+            </div>
+        </div>
+        <div class="iconbox set">
+            <div style="display: inline-block;">
+                <span class="iconfont icon-setting"></span>
+            </div>
+            <span class="icontext">设置</span>
+        </div>
+        <div class="iconbox top">
+            <span class="iconfont icon-top"></span>
+            <span class="icontext">返回顶部</span>
+        </div>
+    </div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : "first19326",
+        GitHubRepositories : "Hexo-LiveForCode",
+
+        User             : "Live For Code",
+        UserAvatar       : "/image/sidebar/avatar.jpg",
+        WebsiteStartDate : "2020-01-01",
+
+        WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Live For Code",
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : "(*´∇｀*) 欢迎回来!",
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : "/image/website/logo.png",
+
+        ProgressBar : {
+            id       : "topProgressBar",
+            color    : "#77B6FF",
+            height   : "2px",
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound : {
+                tension  : 16,
+                friction : 5
+            },
+            spinner : {
+                id     : "spinner",
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : "#F0F0F0",
+                    stroke     : "#272633",
+                    base       : "",
+                    child      : "#272633"
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : "rgba(255, 255, 255, .2)",
+            clearOffset : 0.3
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : "60%",
+            colorBrightness  : "50%",
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : "random",
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                "/image/header/home.jpg",
+            
+                "/image/header/home.jpeg",
+            
+                "/image/header/2023-04-17-20-51-03.jpg",
+            
+                "/image/header/2023-04-17-20-54-07.jpg",
+            
+                "/image/header/2023-04-17-20-54-22.jpg",
+            
+                "/image/header/2023-04-17-20-55-25.jpg",
+            
+                "/image/header/2023-04-17-21-04-19.jpg",
+            
+                "/image/header/2023-04-17-21-04-34.jpg",
+            
+                "/image/header/2023-04-17-21-04-41.jpg",
+            
+                "/image/header/2023-04-17-21-05-22.jpg",
+            
+        ],
+        HomeBannerText  : "",
+
+        ArticleHeaderImage : [
+            
+                "/image/header/article.jpg",
+            
+                "/image/header/2023-04-17-21-04-19.jpg",
+            
+                "/image/header/2023-04-17-21-04-34.jpg",
+            
+                "/image/header/2023-04-17-21-04-41.jpg",
+            
+                "/image/header/2023-04-17-21-05-22.jpg",
+            
+        ],
+
+        OtherBannerText : "",
+
+        Error : {
+            icon    : "icon-swimming",
+            title   : "PAGE NOT FOUND",
+            content : [
+                
+                    "很抱歉，您访问的页面不存在！",
+                
+                    "可能是输入地址有误或该地址已变更。",
+                
+            ],
+            buttons : [
+                
+                    {
+                        icon  : "icon-home",
+                        text  : "返回首页",
+                        href  : "https://fadeway32.gitee.io/",
+                        class : ""
+                    },
+                
+            ]
+        },
+
+        MenuNotice : {
+            enable : true,
+            notice : "简单地活着，肆意而又精彩！",
+            speed  : 20
+        },
+        MenuList : [
+            
+                {
+                    name   : "首页",
+                    icon   : "icon-home-fill",
+                    href   : "/",
+                    type   : "index",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "分类",
+                    icon   : "icon-folder-fill",
+                    href   : "/category",
+                    type   : "category",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "标签",
+                    icon   : "icon-discount-fill",
+                    href   : "/tag",
+                    type   : "tag",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "归档",
+                    icon   : "icon-calendar-fill",
+                    href   : "/archive",
+                    type   : "archive",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "赞赏",
+                    icon   : "icon-heart-fill",
+                    href   : "/donate",
+                    type   : "donate",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "关于",
+                    icon   : "icon-about-fill",
+                    href   : "/about",
+                    type   : "about",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "订阅",
+                    icon   : "icon-rss",
+                    href   : "/atom.xml",
+                    type   : "",
+                    class  : "",
+                    target : "_blank"
+                },
+            
+                {
+                    name   : "搜索",
+                    icon   : "icon-search-menu",
+                    href   : "javascript:;",
+                    type   : "",
+                    class  : "search",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "留言板",
+                    icon   : "icon-comments-fill",
+                    href   : "/comment",
+                    type   : "comment",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "友情链接",
+                    icon   : "icon-link",
+                    href   : "/friend",
+                    type   : "friend",
+                    class  : "",
+                    target : "_self"
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        name   : "知乎",
+                        icon   : "icon-zhihu",
+                        href   : "https://www.zhihu.com/people/wo-xin-de-love",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "微博",
+                        icon   : "icon-weibo",
+                        href   : "https://weibo.com/u/3939432776",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "QQ",
+                        icon   : "icon-qq",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "https://gitee.com/fadeway32/fadeway32/raw/master/img/B5C4BECA9D2E1BBE5B5B9020421E9426.png"
+                    },
+                
+                    {
+                        name   : "微信",
+                        icon   : "icon-wechat",
+                        href   : "javascript:;",
+                        class  : "image",
+                        target : "_self",
+                        image  : "https://gitee.com/fadeway32/fadeway32/raw/master/img/F35AB4B62DEAE3B5DC2907087E35424E.png"
+                    },
+                
+                    {
+                        name   : "GitHub",
+                        icon   : "icon-github",
+                        href   : "https://github.com/first19326",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【人生若只如初见<span><i class='iconfont icon-like-fill'></i></span>何事秋风悲画扇】</div><div>&copy; 2020-2022 WorstOne. All Rights Reserved.</div>",
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                "Based on cnblogs theme SimpleMemory.",
+                            
+                                "",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "SimpleMemory Author:",
+                            
+                                "BNDong",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "Theme:",
+                            
+                                "LiveForCode",
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : "",
+
+        Donate : {
+            paypal  : "",
+            bitcoin : "",
+            alipay  : "/image/donate/alipay.png",
+            wechat  : "/image/donate/wechat.png"
+        },
+
+        Search : {
+            applicationID : "010C3EANT8",
+            apiKey        : "c7abab9f11b79102b9aff7fe6d41447d",
+            indexName     : "Notes",
+            hits          : {
+                page : 20
+            },
+            labels        : {
+                placeholder : "搜索",
+                empty       : "未发现与 「${query}」 相关的内容",
+                stats       : "${hits} 条相关条目，使用了 ${time} 毫秒",
+            }
+        }, 
+
+        Valine : {
+            switch         : true,
+            el             : ".comments-content",
+            appId          : "srhKtvWPQTWYKh3qX8G8M7v0-gzGzoHsz",
+            appKey         : "8uVSP1q6UlALVC5igYfIfv2h",
+            serverURLs     : "",
+            placeholder    : "你是我一生只会遇见一次的惊喜...",
+            avatar         : "mm",
+            meta           : "nick,mail,link",
+            requiredFields : "nick,mail",
+            pageSize       : 5,
+            lang           : "zh-cn",
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : ".toc",
+            contentSelector       : ".article-body",
+            headingSelector       : "h1, h2, h3, h4, h5",
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : ".toc",
+            positionFixedClass    : "toc-fixed",
+            fixedSidebarOffset    : "",
+        },
+
+        Require : {
+            baseUrl     : "/js/",
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : "Meting"
+        },
+        APlayer : {
+            container : ".aplayer",
+            fixed     : true,
+            autoplay  : true,
+            loop      : "all",
+            order     : "random",
+            preload   : "auto",
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 2,
+            audio     : [
+                
+                    {
+                        name   : "Endless Tears",
+                        artist : "CLIFF EDGE",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Endless Tears.mp3",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+            ]
+        },
+        Meting : {
+            id       : "3778678", 
+            lrcshow  : false, 
+            server   : "netease", 
+            type     : "playlist", 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : "all", 
+            order    : "random", 
+            preload  : "auto", 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        Mouse : {
+            enable  : true,
+            options : {
+                size  : 6,
+                sizeF : 24
+            }
+        },
+
+        LazyLoad : {
+            default : "/image/website/lazyload.svg"
+        },
+  
+        Style : {
+            aplayer          : "/css/APlayer.css",
+            archive          : "/css/archive.css",
+            base             : "/css/base.css",
+            clipboard        : "/css/clipboard.css",
+            code             : "/css/code.css",
+            donate           : "/css/donate.css",
+            fancybox         : "/css/jquery.fancybox.css",
+            footer           : "/css/footer.css",
+            iconfont         : "/iconfont/iconfont.css",
+            index            : "/css/index.css",
+            menuBubble       : "/css/menu-bubble.css",
+            mouse            : "/css/mouse.css",
+            page             : "/css/page.css",
+            post             : "/css/post.css",
+            search           : "/css/search.css",
+            tocbot           : "/css/tocbot.css",
+            valine           : "/css/valine.css"
+        },
+
+        Script: {
+            aplayer          : "/js/APlayer.min.js",
+            config           : "/js/require.config.js",
+            index            : "/js/index.js",
+            instantSearch    : "/js/instantsearch.min.js",
+            iscroll          : "/js/iscroll.js",
+            jQuery           : "/js/jquery-3.4.1.min.js",
+            loading          : "/js/loading.js",
+            meting           : "/js/Meting.min.js",
+            require          : "/js/require.min.js"
+        },
+
+        Font: {
+            LongCang    : "/font/LongCang.css",
+            Monda       : "/font/Monda.css",
+            NotoSansSC  : "/font/NotoSansSC.css",
+            NotoSerifSC : "/font/NotoSerifSC.css",
+            Playball    : "/font/Playball.css",
+            PTMono      : "/font/PTMono.css",
+            Roboto      : "/font/Roboto.css",
+            RobotoSlab  : "/font/RobotoSlab.css",
+            Rosario     : "/font/Rosario.css",
+            UbuntuMono  : "/font/UbuntuMono.css"
+        },
+
+        Suffix : {
+            about : "你知道的越多,你不知道的越多"
+        },
+            
+        Theme : {
+            url  : "https://fadeway32.gitee.io/",
+            name : "fadeway32"
+        }  
+    };
+</script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>
